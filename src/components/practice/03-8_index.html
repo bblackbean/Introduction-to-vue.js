@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <!-- props : 상위 컴포넌트에서 하위 컴포넌트로 데이터를 전달할 때 사용하는 속성 -->
+        <!-- v-bind 속성의 왼쪽 값으로 하위 컴포넌트에서 정의한 props 속성을 넣고, 오른쪽 값으로 하위 컴포넌트에 전달할 상위 컴포넌트의 data 속성을 지정함 -->
+        <!-- Tip : 오른쪽에서 왼쪽으로 속성을 읽으면 더 수월함 -->
+        <child-component v-bind:propsdata="message"></child-component>
+        <!-- propsdata : props 속성 이름 -->
+        <!-- message : 상위 컴포넌트의 데이터 속성 -->
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+<script>
+    Vue.component('child-component', {
+        props: ['propsdata'],
+        template: '<p>{{ propsdata }}</p>'
+    });
+
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue! passed from Parent Component'
+        }
+    });
+</script>
+</body>
+</html>
